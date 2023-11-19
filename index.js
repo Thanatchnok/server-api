@@ -1,19 +1,13 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const cors = require('cors');
 
 
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({ 
-    host:"demodb.cdfd2imbevr7.us-east-1.rds.amazonaws.com",
-    port: "3306",
-    user: 'root', 
-    password: "12345678", 
-    database: "bac" 
-}); 
+const db = mysql.createConnection(DATABASE_URL='mysql://wnabil0a8vhw59n8lltg:pscale_pw_gE9GG0vKJTiAFaK5fqO4Nq5S9zumEnW5WrOoMFdiGVx@aws.connect.psdb.cloud/buddyandco?ssl={"rejectUnauthorized":true}')
 module.exports = { db };
 
 app.get('/users', (req, res)=>{
@@ -157,6 +151,4 @@ app.get('/resale_ticket', (req, res) => {
     });
 });
 
-app.listen('3000',()=>{
-    console.log('Server on 3000');
-})
+app.listen(process.env.PORT || 3000)
