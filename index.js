@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection(DATABASE_URL='mysql://wnabil0a8vhw59n8lltg:pscale_pw_gE9GG0vKJTiAFaK5fqO4Nq5S9zumEnW5WrOoMFdiGVx@aws.connect.psdb.cloud/buddyandco?ssl={"rejectUnauthorized":true}')
+const db = mysql.createConnection()
 module.exports = { db };
 
 app.get('/users', (req, res)=>{
