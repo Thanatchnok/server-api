@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
+require('dotenv').config()
 const cors = require('cors');
 
 
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection()
+const db = mysql.createConnection(process.env.DATABASE_URL)
 module.exports = { db };
 
 app.get('/users', (req, res)=>{
